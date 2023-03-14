@@ -19,9 +19,26 @@ export const CounterButton = ({ onIncrement, timesClicked }) => {
     // now working with life cycle of components in modern functional react components
     // import useEffect - done above
     // call useEffect function and pass it a function as an argument - anonymous as first example
+    // first draft with just one argument -- useEffect(() => {
+    //     console.log('called useEffect!');
+    // });
+    // useEffect gets called 1. when component is rendered 2. when component data updates (data from props or hooks changes)
+    // logic placed in conjunction with the useEffect logic will occur at the same time, such as a console.log()
+    // useEffect can be used to control when functions called/rerun by passing second argument
+    // pass in an array of values as a second argument, so useEffect only reruns when the value/s met
+    // version 2 w/array for when to call -- useEffect(() => {
+    //     console.log('Second version of useEffect!');
+    // }, [timesClicked]);
+    // counterButton function must have the prop passed for useEffect to use it
+    // can also pass an empty array to prevent useEffect from rerun, only runs when first rendered, not when state changes
+    // this is useful for fetching server data / sending a request only when something changes
+    // useEffect can call/return another function when component removed from dom (unmounts)
     useEffect(() => {
-        console.log('called useEffect!');
-    });
+        console.log('Version 3!');
+        return () => console.log('Unmounting the component');
+        // use for when component subscribed to observable or other event
+        // must unsubscribe when unmounted
+    }, []);
     return (
         <>
             <p>You clicked my button {timesClicked} times</p>

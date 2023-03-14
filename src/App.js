@@ -20,10 +20,16 @@ function App() {
   // move a state two child components of the same parent will use into the parent
   // then pass this as prop to other components
   
+  // adding unmounting/unsubscribe behanvior to remove component after congrats msg triggered
+  const [hideMsg, setHideMsg] = useState(false);
+  // change the useState argument to true when congrats triggered with by calling hideMsg below
   return (
     <div className="App">
       <header className="App-header">
-        <CongratsMsg timesClicked={timesClicked} triggerClicks={12} />
+        {hideMsg ? null 
+        : <CongratsMsg timesClicked={timesClicked} 
+            triggerClicks={12} 
+            onHide={() => setHideMsg(true)}/>} 
         <CounterButton onIncrement={increment} timesClicked={timesClicked} />
         <Greeting name="Lord Glablok" numberOfConquests={3895} />
       </header>
