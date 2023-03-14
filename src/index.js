@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  // React.StrictMode renders any components with hooks twice (when in development)
+  // This is to ensure there are no side effects rendering components
   <React.StrictMode>
     <App />
   </React.StrictMode>
