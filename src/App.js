@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { HomePage, CounterButtonPage, PersonnelListPage, NotFoundPage } from './pages';
+import { HomePage, CounterButtonPage, PersonnelListPage, NotFoundPage, ProtectedPage } from './pages';
 
 // import link from react-dom. using anchor <a></a> reloads the app when switching pages
 // url and query parameters are info about the page contained in in the url
@@ -21,6 +21,7 @@ function App() {
           <Route exact path="/" element={ <HomePage /> } />
           <Route exact path="/counter" element={ <CounterButtonPage /> } />
           <Route exact path="/personnel-list" element={ <PersonnelListPage /> } />
+          <Route exact path="/protected" element={ <ProtectedPage /> } />
           <Route path="*" element={ <NotFoundPage /> } />
         </Routes>
       </BrowserRouter>
